@@ -1,0 +1,234 @@
+/* =========================================================
+   Apple iPhone Product Assistant — Design Tokens
+   Palette:
+     --bg:        #fbfbfd   (Apple off-white page background)
+     --surface:   #ffffff   (cards / panels)
+     --sidebar:   #f5f5f7   (Apple sidebar grey)
+     --text:      #1d1d1f   (primary text)
+     --text-sub:  #6e6e73   (secondary text)
+     --accent:    #0071e3   (Apple blue)
+     --accent-h:  #0077ed   (Apple blue, hover)
+     --border:    #d2d2d7   (hairline borders)
+   Type: -apple-system stack (SF Pro fallback), tight tracking on
+   display text, generous line-height on body text.
+   ========================================================= */
+
+:root {
+    --bg: #fbfbfd;
+    --surface: #ffffff;
+    --sidebar: #f5f5f7;
+    --text: #1d1d1f;
+    --text-sub: #6e6e73;
+    --accent: #0071e3;
+    --accent-h: #0077ed;
+    --border: #d2d2d7;
+    --radius-lg: 18px;
+    --radius-pill: 999px;
+    --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.04);
+    --shadow-lift: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+html, body, [class*="css"] {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* ---------- page background ---------- */
+.stApp {
+    background: var(--bg);
+}
+
+/* hide default streamlit chrome for a cleaner look */
+#MainMenu, footer, header[data-testid="stHeader"] {
+    visibility: hidden;
+    height: 0;
+}
+
+.block-container {
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+    max-width: 980px;
+}
+
+/* ---------- sidebar ---------- */
+section[data-testid="stSidebar"] {
+    background: var(--sidebar);
+    border-right: 1px solid var(--border);
+}
+
+section[data-testid="stSidebar"] .block-container {
+    padding-top: 2rem;
+}
+
+.brand-title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 0;
+}
+
+.brand-sub {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-top: 2px;
+    margin-bottom: 28px;
+}
+
+.topics-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin: 22px 0 8px 2px;
+}
+
+.topic-link {
+    display: block;
+    padding: 8px 10px;
+    margin-bottom: 2px;
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 14.5px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+.topic-link:hover {
+    background: rgba(0, 113, 227, 0.08);
+    color: var(--accent);
+}
+
+/* ---------- hero card ---------- */
+.hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px 44px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-card::before {
+    content: "";
+    position: absolute;
+    top: -60%;
+    right: -10%;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(0,113,227,0.10) 0%, rgba(0,113,227,0) 70%);
+    pointer-events: none;
+}
+
+.hero-title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0 0 8px 0;
+}
+
+.hero-sub {
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--text-sub);
+    max-width: 520px;
+    margin: 0;
+}
+
+/* ---------- section labels ---------- */
+.section-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin: 8px 0 12px 2px;
+}
+
+/* ---------- pill buttons (Popular Searches / Topics) ---------- */
+div[data-testid="stButton"] > button {
+    border-radius: var(--radius-pill) !important;
+    border: 1px solid var(--border) !important;
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding: 8px 20px !important;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.15s ease !important;
+}
+
+div[data-testid="stButton"] > button:hover {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-1px);
+}
+
+/* primary CTA (Search button) */
+div[data-testid="stButton"] > button[kind="primary"] {
+    background: var(--accent) !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+div[data-testid="stButton"] > button[kind="primary"]:hover {
+    background: var(--accent-h) !important;
+    color: #ffffff !important;
+}
+
+/* ---------- text input ---------- */
+div[data-testid="stTextInput"] input {
+    border-radius: 14px !important;
+    border: 1px solid var(--border) !important;
+    padding: 12px 16px !important;
+    font-size: 15px !important;
+    background: var(--surface) !important;
+}
+
+div[data-testid="stTextInput"] input:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15) !important;
+}
+
+/* ---------- chat bubbles ---------- */
+div[data-testid="stChatMessage"] {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 4px 6px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow-soft);
+}
+
+/* user bubble accent stripe */
+div[data-testid="stChatMessage"]:has(div[data-testid="stChatMessageAvatarUser"]) {
+    background: #eef6ff;
+    border-color: rgba(0, 113, 227, 0.25);
+}
+
+/* ---------- empty state ---------- */
+.empty-state {
+    text-align: center;
+    color: var(--text-sub);
+    font-size: 14.5px;
+    padding: 36px 0 18px 0;
+}
+
+/* ---------- footer ---------- */
+.app-footer {
+    text-align: center;
+    color: var(--text-sub);
+    font-size: 12.5px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    margin-top: 28px;
+}
