@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip install --no-cache-dir streamlit
+RUN pip install --no-cache-dir streamlit pandas scikit-learn
 
 EXPOSE 8501
 
